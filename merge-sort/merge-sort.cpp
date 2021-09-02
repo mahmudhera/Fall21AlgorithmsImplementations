@@ -1,25 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void print_array(const int * arr, const int arr_size) {
+    for (int i = 0; i < arr_size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
 int * merge_sorted_arrays(const int *A, const int m, const int *B, const int n) {
     int * C = new int [m+n];
     int kA = 0;
     int kB = 0;
     for (int k = 0; k < m+n; k++) {
-        if (A[kA] <= B[kB]) {
+        if (kA < m && (A[kA] < B[kB] || kB == n)) {
             C[k] = A[kA++];
         } else {
             C[k] = B[kB++];
         }
     }
     return C;
-}
-
-void print_array(const int * arr, const int arr_size) {
-    for (int i = 0; i < arr_size; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
 }
 
 int * merge_sort(const int * A, int n) {
@@ -43,13 +43,15 @@ int * merge_sort(const int * A, int n) {
     int * A_low_sorted = merge_sort(A_low, nMid);
     int * A_high_sorted = merge_sort(A_high, n-nMid);
 
-    print_array(A_low_sorted, nMid);
-    print_array(A_high_sorted, n-nMid);
+    //print_array(A_low_sorted, nMid);
+    //print_array(A_high_sorted, n-nMid);
 
     delete[] A_low;
     delete[] A_high;
 
     int * A_sorted = merge_sorted_arrays(A_low_sorted, nMid, A_high_sorted, n-nMid);
+
+    //print_array(A_sorted, n);
 
     delete[] A_low_sorted;
     delete[] A_high_sorted;

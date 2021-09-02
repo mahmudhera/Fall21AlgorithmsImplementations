@@ -18,6 +18,6 @@ return A_sorted
 ```
 
 ### Running time
-Recurrence: T(n) = 2 T(n/2) + O(n)
 SOlving: O(n log n)
+Recurrence: T(n) = 2 T(n/2) + O(n)
 

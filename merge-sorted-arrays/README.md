@@ -1,9 +1,11 @@
 This algorithm will merge two sorted arrays into another sorted array.
 
-### Input: A[1..n], B[1..m]
-### Output: C[1..m+n]
-### Running time: O(m+n)
+### Input
+A[1..n], B[1..m]
+### Output
+C[1..m+n]
 
+### Algorithm
 ```
 kA = kB = k = 1
 A[n+1] = B[m+1] = M(very large)
@@ -17,3 +19,7 @@ while k <= m+n:
 	k += 1
 return C
 ```
+
+### Running time
+O(m+n)
+
